@@ -25,15 +25,15 @@ output "key_vault_name" {
 
 output "sql_server_name" {
   description = "The name of the created SQL Server"
-  value       = azurerm_sql_server.example.name
+  value       = azurerm_mssql_server.example.name
 }
 
 output "sql_server_fqdn" {
   description = "The fully qualified domain name of the SQL Server"
-  value       = azurerm_sql_server.example.fully_qualified_domain_name
+  value       = azurerm_mssql_server.example.fully_qualified_domain_name
 }
 
 output "sql_database_name" {
   description = "The name of the created SQL Database"
-  value       = azurerm_sql_database.example.name
+  value       = azurerm_mssql_database.example.name
 }
