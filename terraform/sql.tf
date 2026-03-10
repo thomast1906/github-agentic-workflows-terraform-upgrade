@@ -8,8 +8,7 @@ resource "random_password" "sql_admin" {
   min_special      = 2
 }
 
-# Deprecated in azurerm 3.x — replaced by azurerm_mssql_server in 4.x
-resource "azurerm_sql_server" "example" {
+resource "azurerm_mssql_server" "example" {
   name                         = local.sql_server_name
   resource_group_name          = azurerm_resource_group.example.name
   location                     = azurerm_resource_group.example.location
@@ -24,26 +23,35 @@ resource "azurerm_sql_server" "example" {
   tags = local.common_tags
 }
 
-# Deprecated in azurerm 3.x — replaced by azurerm_mssql_database in 4.x
-resource "azurerm_sql_database" "example" {
-  name                             = local.sql_database_name
-  resource_group_name              = azurerm_resource_group.example.name
-  location                         = azurerm_resource_group.example.location
-  server_name                      = azurerm_sql_server.example.name
-  edition                          = "Basic"
-  requested_service_objective_name = "Basic"
+moved {
+  from = azurerm_sql_server.example
+  to   = azurerm_mssql_server.example
+}
+
+resource "azurerm_mssql_database" "example" {
+  name      = local.sql_database_name
+  server_id = azurerm_mssql_server.example.id
+  sku_name  = "Basic"
 
   tags = local.common_tags
 }
 
+moved {
+  from = azurerm_sql_database.example
+  to   = azurerm_mssql_database.example
+}
+
 # Allow Azure services to access the SQL Server
-# Deprecated in azurerm 3.x — replaced by azurerm_mssql_firewall_rule in 4.x
-resource "azurerm_sql_firewall_rule" "azure_services" {
-  name                = "AllowAzureServices"
-  resource_group_name = azurerm_resource_group.example.name
-  server_name         = azurerm_sql_server.example.name
-  start_ip_address    = "0.0.0.0"
-  end_ip_address      = "0.0.0.0"
+resource "azurerm_mssql_firewall_rule" "azure_services" {
+  name             = "AllowAzureServices"
+  server_id        = azurerm_mssql_server.example.id
+  start_ip_address = "0.0.0.0"
+  end_ip_address   = "0.0.0.0"
+}
+
+moved {
+  from = azurerm_sql_firewall_rule.azure_services
+  to   = azurerm_mssql_firewall_rule.azure_services
 }
 
 # Store SQL admin password in Key Vault
