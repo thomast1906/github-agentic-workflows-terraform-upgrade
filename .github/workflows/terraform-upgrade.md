@@ -74,6 +74,8 @@ Perform safe Terraform and provider upgrades for this repository.
 
 Perform Terraform upgrades according to your imported expertise and methodology. Use the workflow inputs to guide your work.
 
+**Important:** Only modify files under the `terraform/` directory. Do NOT create or modify any files under `.github/`.
+
 In addition to version and breaking-change analysis, you must always perform a deprecation scan.
 
 ### Required deprecation handling
