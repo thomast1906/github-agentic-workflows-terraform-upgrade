@@ -16,15 +16,13 @@ on:
         required: false
         type: boolean
         default: "true"
-  schedule:
-    - cron: '0 9 * * 1' # Weekly on Monday at 9 AM
 
 engine: copilot
 
 permissions:
-  contents: write
-  pull-requests: write
-  issues: write
+  pull-requests: read
+  issues: read
+  contents: read
 
 tools:
   github:
@@ -51,13 +49,11 @@ safe-outputs:
 network:
   allowed:
     - defaults
-    - registry.terraform.io
-    - releases.hashicorp.com
-    - raw.githubusercontent.com
+    - terraform
 
 imports:
-  - thomast1906/github-copilot-agent-skills/.github/agents/terraform-provider-upgrade.agent.md@feature/add-terraform-provider-upgrade-agentskill
-  - thomast1906/github-copilot-agent-skills/.github/skills/terraform-provider-upgrade/SKILL.md@feature/add-terraform-provider-upgrade-agentskill
+  - thomast1906/github-copilot-agent-skills/.github/agents/terraform-provider-upgrade.agent.md@test-terraform-upgrade
+  - thomast1906/github-copilot-agent-skills/.github/skills/terraform-provider-upgrade/SKILL.md@test-terraform-upgrade
 ---
 
 # Terraform Upgrade Workflow
