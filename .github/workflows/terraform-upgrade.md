@@ -49,6 +49,7 @@ safe-outputs:
 network:
   allowed:
     - defaults
+    - github
     - terraform
 
 imports:
