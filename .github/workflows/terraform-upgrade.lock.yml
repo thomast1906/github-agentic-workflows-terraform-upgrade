@@ -24,10 +24,10 @@
 #
 # Resolved workflow manifest:
 #   Imports:
-#     - thomast1906/github-copilot-agent-skills/.github/agents/terraform-provider-upgrade.agent.md@test-terraform-upgrade
-#     - thomast1906/github-copilot-agent-skills/.github/skills/terraform-provider-upgrade/SKILL.md@test-terraform-upgrade
+#     - thomast1906/github-copilot-agent-skills/.github/agents/terraform-provider-upgrade.agent.md@main
+#     - thomast1906/github-copilot-agent-skills/.github/skills/terraform-provider-upgrade/SKILL.md@main
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"cdfce1932d6f0cc0ceb966c580d1235d5985c7627e6aabf4375d8f9c0ea7ccf1"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"71562fd233c3b81027ddbe29198bc76e437b07a2829e628dcad0c7ca846cd238"}
 
 name: "Terraform Upgrade Workflow"
 "on":
@@ -176,10 +176,10 @@ jobs:
           </system>
           GH_AW_PROMPT_EOF
           cat << 'GH_AW_PROMPT_EOF' >> "$GH_AW_PROMPT"
-          {{#runtime-import .github/aw/imports/thomast1906/github-copilot-agent-skills/7d6de268814fe38519d316e1d3e981026dfd0c9f/.github_agents_terraform-provider-upgrade.agent.md}}
+          {{#runtime-import .github/aw/imports/thomast1906/github-copilot-agent-skills/291d7b5baf5633c84dcb9abd99b7919ed846dac5/.github_agents_terraform-provider-upgrade.agent.md}}
           GH_AW_PROMPT_EOF
           cat << 'GH_AW_PROMPT_EOF' >> "$GH_AW_PROMPT"
-          {{#runtime-import .github/aw/imports/thomast1906/github-copilot-agent-skills/7d6de268814fe38519d316e1d3e981026dfd0c9f/.github_skills_terraform-provider-upgrade_SKILL.md}}
+          {{#runtime-import .github/aw/imports/thomast1906/github-copilot-agent-skills/291d7b5baf5633c84dcb9abd99b7919ed846dac5/.github_skills_terraform-provider-upgrade_SKILL.md}}
           GH_AW_PROMPT_EOF
           cat << 'GH_AW_PROMPT_EOF' >> "$GH_AW_PROMPT"
           {{#runtime-import .github/workflows/terraform-upgrade.md}}
@@ -1279,5 +1279,4 @@ jobs:
             setupGlobals(core, github, context, exec, io);
             const { main } = require('/opt/gh-aw/actions/safe_output_handler_manager.cjs');
             await main();
-
 

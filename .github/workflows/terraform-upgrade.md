@@ -53,8 +53,8 @@ network:
     - terraform
 
 imports:
-  - thomast1906/github-copilot-agent-skills/.github/agents/terraform-provider-upgrade.agent.md@test-terraform-upgrade
-  - thomast1906/github-copilot-agent-skills/.github/skills/terraform-provider-upgrade/SKILL.md@test-terraform-upgrade
+  - thomast1906/github-copilot-agent-skills/.github/agents/terraform-provider-upgrade.agent.md@main
+  - thomast1906/github-copilot-agent-skills/.github/skills/terraform-provider-upgrade/SKILL.md@main
 ---
 
 # Terraform Upgrade Workflow
